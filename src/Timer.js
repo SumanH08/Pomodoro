@@ -87,12 +87,12 @@ class Timer extends Component {
 
 	pause = () => {
 		console.log('Inside pause func');
-		if (this.state.isTimerRunning === true) {
-			this.setState({ isTimerRunning: false });
+		if (this.timer) {
 			clearInterval(this.timer);
+			this.timer = false;
 		} else {
-			this.setState({ isTimerRunning: true });
-			clearInterval(this.timer);
+			console.log('Inside pause else');
+			this.timer = setInterval(this.timerFunc, 1000);
 		}
 	};
 
@@ -134,8 +134,27 @@ class Timer extends Component {
 			);
 		}
 
+		var length = this.state.startTime / this.state.currentSession * 100;
 		return (
-			<div className="timer">{buttona}</div>
+			<div
+				style={{
+					backgroundColor: 'grey',
+					border: '1px solid white',
+					borderRadius: 6,
+					height: 30
+				}}
+				className="timer">
+				{buttona}
+				<svg height="210" width="500">
+					<line
+						x1="0"
+						y1="0"
+						x2={length}
+						y2="0"
+						style={{ stroke: 'red', strokeWidth: 2 }}
+					/>
+				</svg>{' '}
+			</div>
 			/*	<div>
 				<button>{this.state.currentBreak}</button>
 			</div> */
