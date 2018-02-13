@@ -4,7 +4,7 @@ class Timer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentSession: 0,
+			currentSession: 25 * 60,
 			currentBreak: 0,
 			startTime: 0,
 			currentActive: 'session',
