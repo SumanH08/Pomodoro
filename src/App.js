@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Timer from './Timer.js';
 // import plus from 'react-icons/lib/io/ios-add';
@@ -8,33 +7,39 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			breakCounter: 0,
-			sessionCounter: 0
+			breakCounter: 5,
+			sessionCounter: 25
 		};
 	}
 
 	incrementBreak = () => {
 		this.setState({
-			breakCounter: ++this.state.breakCounter
+			breakCounter: this.state.breakCounter + 1
 		});
 	};
 
 	decrementBreak = () => {
-		this.setState({
-			breakCounter: --this.state.breakCounter
-		});
+		if (this.state.breakCounter === 1) {
+		} else {
+			this.setState({
+				breakCounter: this.state.breakCounter - 1
+			});
+		}
 	};
 
 	incrementSession = () => {
 		this.setState({
-			sessionCounter: ++this.state.sessionCounter
+			sessionCounter: this.state.sessionCounter + 1
 		});
 	};
 
 	decrementSession = () => {
-		this.setState({
-			sessionCounter: --this.state.sessionCounter
-		});
+		if (this.state.sessionCounter === 1) {
+		} else {
+			this.setState({
+				sessionCounter: this.state.sessionCounter - 1
+			});
+		}
 	};
 
 	render() {
